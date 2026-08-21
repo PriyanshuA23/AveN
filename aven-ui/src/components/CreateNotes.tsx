@@ -5,6 +5,7 @@ import "./CreateNotes.css";
 const CreateNotes = () => {
   const [title, setTitle] = useState("Untitled");
   const [content, setContent] = useState("");
+  const [isBtnEnable, setEnableBtn] = useState(false);
 
   return (
     <div id="notes-area">
@@ -12,14 +13,29 @@ const CreateNotes = () => {
         id="title"
         defaultValue="Untitled"
         value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={(e) => {
+          setTitle(e.target.value);
+          setEnableBtn(true);
+        }}
       />
       <div
         id="content"
         contentEditable="true"
-        onInput={(e) => setContent(e.currentTarget.textContent)}
+        onInput={(e) => {
+          setContent(e.currentTarget.textContent);
+          setEnableBtn(true);
+        }}
       ></div>
-      <button onClick={() => saveNotes(title, content)}>save</button>
+      {isBtnEnable && (
+        <button
+          onClick={() => {
+            saveNotes(title, content);
+            setEnableBtn(false);
+          }}
+        >
+          save
+        </button>
+      )}
     </div>
   );
 };
