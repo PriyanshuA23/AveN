@@ -1,0 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#side-bar {
+    width: 25%;
+    border-right: 2px solid black;
+}
