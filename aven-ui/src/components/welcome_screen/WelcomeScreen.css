@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#welcome-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    gap: 5px;
+}
+
+#welcome-area h1 {
+    color: rgb(65, 65, 65);
+    margin-bottom: 2em;
+}
+
+.welcome-instruction {
+    font-size: 25px;
+    color: rgb(88, 85, 85);
+}

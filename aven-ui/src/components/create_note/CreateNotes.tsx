@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { saveNotes } from "../actions/save_action";
+import { saveNotes } from "../../actions/save_action";
 import "./CreateNotes.css";
 
 const CreateNotes = () => {
@@ -20,6 +20,7 @@ const CreateNotes = () => {
       />
       <div
         id="content"
+        content-placeholder="Start writing from here ....."
         contentEditable="true"
         onInput={(e) => {
           setContent(e.currentTarget.textContent);
