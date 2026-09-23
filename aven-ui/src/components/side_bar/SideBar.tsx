@@ -1,11 +1,18 @@
 import "./SideBar.css";
 
-const SideBar = ({ setIsWelcomeState }: any) => {
-  const dataList = ["shopping", "fitness", "learning", "Personal Project"];
+type Notes = string[];
+
+const SideBar = ({
+  setIsWelcomeState,
+  notesTitle,
+}: {
+  setIsWelcomeState: any;
+  notesTitle: Notes;
+}) => {
   return (
     <div id="side-bar">
       <button onClick={() => setIsWelcomeState(false)}>+ New Note</button>
-      {dataList.map((note) => (
+      {notesTitle.map((note) => (
         <div>{note}</div>
       ))}
     </div>
