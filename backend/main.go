@@ -7,13 +7,13 @@ import (
 )
 
 type note struct {
-	title       string
-	description string
+	Title       string `json:"title"`
+	Description string `json:"description"`
 }
 
 var NOTES = []note{
-	{title: "shopping", description: "This is my first shopping note"},
-	{title: "Learning Go", description: "This is my second note for learning go"},
+	{Title: "shopping", Description: "This is my first shopping note"},
+	{Title: "Learning Go", Description: "This is my second note for learning go"},
 }
 
 func getNotes(w http.ResponseWriter, r *http.Request) {
@@ -23,14 +23,23 @@ func getNotes(w http.ResponseWriter, r *http.Request) {
 	titles := make([]string, len(NOTES))
 
 	for i := 0; i < len(NOTES); i++ {
-		titles = append(titles, NOTES[i].title)
+		titles[i] = NOTES[i].Title
 	}
 
 	json.NewEncoder(w).Encode(titles)
 }
 
+func saveNote(w http.ResponseWriter, r *http.Request) {
+	var request note
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	json.NewDecoder(r.Body).Decode(&request)
+
+	NOTES = append(NOTES, request)
+}
+
 func main() {
 	http.HandleFunc("/notes", getNotes)
+	http.HandleFunc("/save", saveNote)
 
 	fmt.Println("Server started")
 
